@@ -23,7 +23,10 @@
       </label>
       <label class="form__label">
         <p class="form__descr">Пароль</p>
-        <input type="password" placeholder="Пароль" class="form__input form__password">
+        <div class="form__password-hide">
+          <input type="password" placeholder="Пароль" class="form__input form__password">
+          <button class="form__password-btn"></button>
+        </div>
       </label>
       <button class="form__submit">Увійти</button>
       <div class="form__box">
@@ -32,8 +35,9 @@
       </div>
     </form>
   </div>
-
+  <script src="js/password_hide.js"></script>
   <script src="js/main.min.js"></script>
+
 </body>
 
 </html>
