@@ -2,8 +2,10 @@
 @import 'fonts';
 @import 'reset';
 @import 'global';
+
 .header {
 
+  
   padding: 0 10px;
   &__box {
     display: flex;
@@ -346,8 +348,13 @@
   max-width: 80%;
 }
 
+.hide {
+  display: none;
+}
 
-
+.show {
+  display: block;
+}
 
 
 @import 'media';

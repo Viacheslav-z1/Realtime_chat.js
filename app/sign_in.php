@@ -18,14 +18,6 @@
       </h1>
       <p class="form__message">Message</p>
       <label class="form__label">
-        <p class="form__descr">Ім'я</p>
-        <input placeholder="Ім'я" type="text" class="form__input form__name">
-      </label>
-      <label class="form__label">
-        <p class="form__descr">Прізвище</p>
-        <input placeholder="Прізвище" type="text" class="form__input form__lastName">
-      </label>
-      <label class="form__label">
         <p class="form__descr">Пошта</p>
         <input type="mail" placeholder="Пошта" class="form__input form__mail">
       </label>
@@ -36,14 +28,10 @@
           <button class="form__password-btn"></button>
         </div>
       </label>
-      <label class="form__label">
-        <p class="form__descr">Фото профілю</p>
-        <input type="file" placeholder="Пароль" class="form__input form__img">
-      </label>
-      <button class="form__submit">Зареєструватись</button>
+      <button class="form__submit">Увійти</button>
       <div class="form__box">
-        <p class="form__text">Уже є аккаунт?</p>
-        <a class="form__sign-in" href="sign_in.html" class="form__login">Увійти</a>
+        <p class="form__text">Немає аккаунту?</p>
+        <a class="form__sign-in" href="index.php" class="form__login">Зареєструватись</a>
       </div>
     </form>
   </div>
