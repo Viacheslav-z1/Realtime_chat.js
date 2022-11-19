@@ -7,6 +7,7 @@ chatBox = document.querySelector(".message__list");
 
 
 
+
 sendBtn.addEventListener('click',(e)=>{
   e.preventDefault();
 
@@ -16,11 +17,11 @@ sendBtn.addEventListener('click',(e)=>{
     if (req.readyState === XMLHttpRequest.DONE) {
       if (req.status === 200) {
         inputField.value = "";
+        scrollToBottom()
       }
     }
   }
   let formData = new FormData(form);
-  console.log(formData.values());
   req.send(formData);
 })
 
@@ -39,3 +40,8 @@ setInterval(() =>{
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.send("incoming_id="+incoming_id);
 },300);
+
+
+function scrollToBottom() {
+  chatBox.scrollTop = chatBox.scrollHeight;
+}

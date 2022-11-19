@@ -292,6 +292,9 @@
     font-size: 15px;
     line-height: 17px;
     color: #666666;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__chat-box {
@@ -329,6 +332,7 @@
 
   &__text {
     background-color: rgb(159, 159, 159);
+    background-color: #18a9ce;
     border-radius: 15px 15px 15px 0;
     padding: 10px;
     display: inline-block;
@@ -356,7 +360,7 @@
 }
 
 .outgoing {
-  background-color: #000;
+  background-color: rgb(72, 14, 138);
   color: #fff;
   border-radius: 15px 15px 0 15px;
   padding: 10px;

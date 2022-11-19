@@ -24,7 +24,7 @@ searchBtn.addEventListener('click', () => {
   xhr.send("searchTerm=" + searchTerm);
   setTimeout(() => {
     searchBar.classList.remove("active");
-  }, 4000);
+  }, 3000);
 })
 
 
