@@ -16,15 +16,15 @@
                     $_SESSION['unique_id'] = $row['unique_id'];
                     echo "success";
                 }else{
-                    echo "Something went wrong. Please try again!";
+                    echo "Щось пішло не так, спробуйте ще раз!";
                 }
             }else{
-                echo "Email or Password is Incorrect!";
+                echo "Пошта або пароль не правильний!";
             }
         }else{
-            echo "$email - This email not Exist!";
+            echo "$email - Такої пошти не існує!";
         }
     }else{
-        echo "All input fields are required!";
+        echo "Всі поля обов'язкові!";
     }
 ?>

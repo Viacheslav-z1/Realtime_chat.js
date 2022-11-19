@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Онлайн - чат</title>
-  <link rel="stylesheet" href="css/style.min.css">
-</head>
+
+
+
+<?php include_once "header.php"; ?>
 
 <body>
 
@@ -19,12 +14,12 @@
       <p class="form__message">Message</p>
       <label class="form__label">
         <p class="form__descr">Пошта</p>
-        <input type="mail" placeholder="Пошта" class="form__input form__mail">
+        <input type="mail" name="email" placeholder="Пошта" require class="form__input form__mail">
       </label>
       <label class="form__label">
         <p class="form__descr">Пароль</p>
         <div class="form__password-hide">
-          <input type="password" placeholder="Пароль" class="form__input form__password">
+          <input type="password" name="password" require placeholder="Пароль" class="form__input form__password">
           <button class="form__password-btn"></button>
         </div>
       </label>
@@ -36,6 +31,7 @@
     </form>
   </div>
   <script src="js/password_hide.js"></script>
+  <script src="js/sign_in.js"></script>
   <script src="js/main.min.js"></script>
 
 </body>

@@ -9,7 +9,7 @@
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
             if(mysqli_num_rows($sql) > 0){
-                echo "$email - This email already exist!";
+                echo "$email - Ця пошта вже використовується!";
             }else{
                 if(isset($_FILES['image'])){
                     $img_name = $_FILES['image']['name'];
@@ -38,24 +38,24 @@
                                         $_SESSION['unique_id'] = $result['unique_id'];
                                         echo "success";
                                     }else{
-                                        echo "This email address not Exist!";
+                                        echo "Такої пошти не існує!";
                                     }
                                 }else{
-                                    echo "Something went wrong. Please try again!";
+                                    echo "Щось пішло не так, спробуйте ще раз!";
                                 }
                             }
                         }else{
-                            echo "Please upload an image file - jpeg, png, jpg";
+                            echo "Завантажте фото в форматах - jpeg, png, jpg";
                         }
                     }else{
-                        echo "Please upload an image file - jpeg, png, jpg";
+                        echo "Завантажте фото в форматах - jpeg, png, jpg";
                     }
                 }
             }
         }else{
-            echo "$email is not a valid email!";
+            echo "$email не є  корректним!";
         }
     }else{
-        echo "All input fields are required!";
+        echo "Всі поля обов'язков!";
     }
 ?>

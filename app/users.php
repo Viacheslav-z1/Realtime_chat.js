@@ -1,27 +1,35 @@
-<!DOCTYPE html>
-<html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Онлайн - чат</title>
-  <link rel="stylesheet" href="css/style.min.css">
-</head>
+<?php 
+  session_start();
+  include_once "php/config.php";
+  if(!isset($_SESSION['unique_id'])){
+    header("location: sign_in.php");
+  }
+?>
+
+
+
+<?php include_once "header.php"; ?>
 
 <body>
 
   <header class="header">
     <div class="container header__container">
+                <?php 
+            $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+            if(mysqli_num_rows($sql) > 0){
+              $row = mysqli_fetch_assoc($sql);
+            }
+          ?>
       <div class="header__inner">
         <div class="header__box">
-          <img src="images/1.jpg" class="header__img">
+          <img src="php/images/<?php echo $row['img']; ?>" class="header__img">
           <div class="header__info">
-            <h3 class="header__bio">Slavik Zalotnyi</h3>
-            <p class="header__last-active">Онлайн</p>
+            <h3 class="header__bio"><?php echo $row['fname'] . " " . $row['lname'] ?></h3>
+            <p class="header__last-active"><?php echo $row['status']; ?></p>
           </div>
         </div>
-        <button class="header__btn">Вийти</button>
+        <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="header__btn">Вийти</a>
       </div>
     </div>
   </header>
@@ -34,66 +42,10 @@
         </button>
       </label>
       <ul class="users__list">
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
-        <li class="users__user">
-          <img src="images/1.jpg" class="users__img">
-          <div class="users__info">
-            <h3 class="users__bio">Slavik Zalotnyi</h3>
-            <p class="users__last-message">Це останнє повідомлення
-            </p>
-          </div>
-        </li>
       </ul>
     </div>
   </div>
-
+<script src="js/users.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 

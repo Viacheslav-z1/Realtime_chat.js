@@ -12,26 +12,22 @@
         if(mysqli_num_rows($query) > 0){
             while($row = mysqli_fetch_assoc($query)){
                 if($row['outgoing_msg_id'] === $outgoing_id){
-                    $output .= '<div class="chat outgoing">
-                                <div class="details">
-                                    <p>'. $row['msg'] .'</p>
-                                </div>
-                                </div>';
-                }else{
-                    $output .= '<div class="chat incoming">
-                                <img src="php/images/'.$row['img'].'" alt="">
-                                <div class="details">
-                                    <p>'. $row['msg'] .'</p>
-                                </div>
-                                </div>';
+                    $output .= ' <li class="message__item outgoing">'. $row['msg'] .'</li>';
+                }else {
+                    $output .= '<li class="message__item ingoing">
+          <div class="message__info">
+            <img src="php/images/'.$row['img'].'" class="users__img">
+            <p class="message__text">'. $row['msg'] .'</p>
+          </div>
+        </li>';
                 }
             }
         }else{
-            $output .= '<div class="text">No messages are available. Once you send message they will appear here.</div>';
+            $output .= '<div class="text">У Вас ще немає повідомлень, напишіть щось, щоб почати спілкуватись</div>';
         }
         echo $output;
     }else{
-        header("location: ../login.php");
+        header("location: ../sign_in.php");
     }
 
 ?>

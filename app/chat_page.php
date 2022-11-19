@@ -1,49 +1,53 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Онлайн - чат</title>
-  <link rel="stylesheet" href="css/style.min.css">
-</head>
-
+<?php 
+  session_start();
+  include_once "php/config.php";
+  if(!isset($_SESSION['unique_id'])){
+    header("location: sign_in.php");
+  }
+?>
+<?php include_once "header.php"; ?>
 <body>
 
   <div class="container message__container">
+            <?php 
+          $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
+          if(mysqli_num_rows($sql) > 0){
+            $row = mysqli_fetch_assoc($sql);
+          }else{
+            header("location: users.php");
+          }
+        ?>
     <div class="users__chat-box">
       <div class="users__user">
-        <img src="images/1.jpg" class="users__img">
+        <div class="users__chat-img-box">
+          <a href="users.php" class="users__back">
+           <img src="images/arrow_left.svg" alt="back" class="users__back-img">
+          </a>
+           <img src="php/images/<?php echo $row['img']; ?>" class="users__img">
+        </div>
         <div class="users__info">
-          <h3 class="users__bio">Slavik Zalotnyi</h3>
-          <p class="users__last-message">Онлайн
+          <h3 class="users__bio"><?php echo $row['fname']. " " . $row['lname'] ?></h3>
+          <p class="users__last-message"><?php echo $row['status']; ?>
           </p>
         </div>
       </div>
       <ul class="message__list">
-        <li class="message__item outgoing">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sunt vitae sint cum rep
-        </li>
-        <li class="message__item ingoing">
-          <div class="message__info">
-            <img src="images/1.jpg" class="users__img">
-            <p class="message__text">Lorem ipsddwdwdwdpora.</p>
-          </div>
-        </li>
-        <li class="message__item outgoing">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sunt vitae sint cum rep
-        </li>
       </ul>
       <div class="message__input-box">
-        <input class="message__input" placeholder="Введіть повідомлення..." type="text">
-        <button class="message__search users__search">
-          <img src="images/send.svg" alt="search" class="users__search-img">
-        </button>
+        <form action="#" class="message__form typing-area">
+          <input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id']; ?>" hidden>
+           <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
+            <input autocomplete="off" name="message" class="message__input" placeholder="Введіть повідомлення..." type="text">
+            <button class="message__search users__search">
+              <img src="images/send.svg" alt="search" class="users__search-img">
+            </button>
+        </form>
       </div>
     </div>
   </div>
 
+  <script src="js/chat.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 

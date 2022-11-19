@@ -99,6 +99,7 @@
     background-color: transparent;
     border: none;
     padding: 10px;
+    padding-right: 40px;
     border: 1px solid #000;
     border-radius: 10px;
     width: 100%;
@@ -188,9 +189,10 @@
 .users {
     padding: 0 10px;
   &__container {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
+   max-width: 520px;
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 10px;
 
   }
 
@@ -213,6 +215,7 @@
     width: 100%;
     outline: none;
     border-radius: 10px;
+    padding-right: 40px;
   }
 
   &__search{
@@ -250,11 +253,23 @@
 
   &__user {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     border-bottom: 1px solid #a1a1a1;
     padding: 10px;
     padding-left: 0;
-    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+  }
+
+  &__chat-img-box{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__back-img{
+    width: 24px;
+    height: 24px;
   }
 
   &__img {
@@ -264,7 +279,9 @@
     object-fit: contain;
   }
 
-  &__info {}
+  &__info {
+    position: relative;
+  }
 
   &__bio {
     margin-bottom: 5px;
@@ -306,7 +323,9 @@
     margin-top: 50px;
   }
 
-  &__item {}
+  &__item {
+    word-break: break-all;
+  }
 
   &__text {
     background-color: rgb(159, 159, 159);
@@ -328,9 +347,11 @@
   &__input {
     width: 100%;
     padding: 10px;
+    padding-right: 47px;
     border: none;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
+    background-color: transparent;
   }
 }
 
@@ -354,6 +375,27 @@
 
 .show {
   display: block;
+}
+
+.img-wrapper{
+  position: relative;
+}
+.status-dot{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  &.offline{
+    .circle{
+      opacity: .3;
+    }
+  }
+}
+.circle{
+  width: 10px;
+  height: 10px;
+  background-color: rgb(30, 255, 0);
+  border-radius: 50%;
 }
 
 
